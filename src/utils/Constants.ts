@@ -1,0 +1,1 @@
+export const baseURL: string = 'https://discord.com/api/v8'

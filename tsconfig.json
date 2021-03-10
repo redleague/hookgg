@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",                      
+    "module": "commonjs",                   
+    "outDir": "./dist/",                     
+    "strict": true,                           
+    "esModuleInterop": true,
+    "declaration": true,
+    "declarationDir": "./dist/typings",
+    "lib": ["es2017"],
+    "resolveJsonModule": true
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}
