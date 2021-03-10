@@ -1,6 +1,6 @@
 {
   "name": "hook.gg",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Hook.gg is a library for sending webhooks to Discord",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
