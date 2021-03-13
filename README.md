@@ -11,7 +11,7 @@ npm install hook.gg --save
 ```
 
 ## Support
-Found an issue while using this wrapper or have suggestions? Feel free to join the [Red League](https://discord.gg/P6gV4wX9sG) Discord Server, send a bug report or a pull request.
+Found an issue while using this wrapper or have suggestions? Feel free to join the [Red League](https://discord.gg/HCjEmNpp8t) Discord Server, send a bug report or a pull request.
 
 
 ## Available Methods
