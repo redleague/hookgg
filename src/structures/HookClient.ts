@@ -1,24 +1,23 @@
 /* eslint-disable @typescript-eslint/explicit-member-accessibility */
-// import { makeRequest } from "../utils/makeRequest";
+import { makeRequest } from "../utils/makeRequest";
 
-export interface HookClientOptions {
-    url: string;
-    avatar_url?: string;
-    username?: string;
-}
+import { SendOptions, HookClientOptions } from "../typings";
 
 export class HookClient {
-    public readonly url: string;
-    public readonly avatar_url?: string;
-    public readonly username?: string;
+    options: HookClientOptions;
 
     constructor(options: HookClientOptions) {
-        this.url = options.url;
-        this.avatar_url = options.avatar_url;
-        this.username = options.username;
+        this.options = options;
     }
 
-    public async send(content: string): Promise<any> {
-        content;
+    public async send(content: string, sendOptions?: SendOptions): Promise<any> {
+        const opt = {
+            ...sendOptions
+        };
+
+        opt.content = content;
+
+        const res = await makeRequest(`${this.options.url}?wait=true`, "POST", opt, this.options);
+        return res;
     }
 }
