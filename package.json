@@ -30,7 +30,7 @@
     "eslint": "^8.2.0",
     "ts-node": "^10.4.0",
     "typedoc": "^0.22.10",
-    "typescript": "^4.4.4"
+    "typescript": "^4.5.4"
   },
   "dependencies": {
     "@aero/centra": "^1.0.8"
