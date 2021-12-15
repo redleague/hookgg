@@ -43,7 +43,7 @@ export class HookMessage {
      * @param args SendOptions
      * @returns Promise<HookMessage>
      */
-    public async edit(opt: string|SendOptions, args?: SendOptions): Promise<any> {
+    public async edit(opt: string|SendOptions, args?: SendOptions): Promise<HookMessage> {
         if (typeof opt == "string") {
             opt = {
                 content: opt,
