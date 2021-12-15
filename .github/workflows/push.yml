@@ -1,0 +1,33 @@
+name: Push compiled files
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Installing Node.js v12
+        uses: actions/setup-node@v2
+        with:
+          node-version: "12"
+      - run: |
+          git fetch origin main
+          git pull origin main
+      - name: Installing dependencies
+        run: npm install 
+      - name: Running linter and compile
+        run: npm run build
+      - name: Force add dist
+        run: git add dist -f
+      - name: Configuring user
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+      - name: Commit and push
+        run: |
+          git commit -m "chore(build): from ${{ github.sha }}" || true
+          git push origin ${{ github.ref }} || true
