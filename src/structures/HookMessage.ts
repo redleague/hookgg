@@ -29,10 +29,20 @@ export class HookMessage {
         this.pinned = rawMessage.pinned;
     }
 
+    /**
+     *
+     * @returns null
+     */
     public delete(): any {
         return makeRequest(`${this.url}/messages/${this.id}`, "DELETE", this.client.options);
     }
 
+    /**
+     *
+     * @param opt Message Content | SendOptions
+     * @param args SendOptions
+     * @returns Promise<HookMessage>
+     */
     public async edit(opt: string|SendOptions, args?: SendOptions): Promise<any> {
         if (typeof opt == "string") {
             opt = {
