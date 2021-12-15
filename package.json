@@ -10,7 +10,8 @@
     "build": "npm run lint && npm run compile",
     "compile": "tsc --build tsconfig.json",
     "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix"
+    "lint:fix": "eslint . --ext .ts --fix",
+    "start:dev": "ts-node src/index.ts"
   },
   "eslintConfig": {
     "parserOptions": {

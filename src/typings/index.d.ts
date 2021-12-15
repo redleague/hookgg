@@ -54,3 +54,31 @@ export interface Embed {
     };
     timestamp?: string;
 }
+
+export interface User {
+    bot: boolean;
+    id: string;
+    username: string;
+    avatar: string | null;
+    discriminator: string;
+}
+
+export interface rawWebhookMessage {
+    id: string;
+    type: number;
+    content: string;
+    channel_id: string;
+    author: User;
+    attachments: [];
+    embeds: Embed[];
+    mentions: [];
+    mention_roles: [];
+    pinned: boolean;
+    mention_everyone: boolean;
+    tts: boolean;
+    timestamp: string;
+    edited_timestamp: string | null;
+    flags: number;
+    components: [];
+    webhook_id: string;
+}
