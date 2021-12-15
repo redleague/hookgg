@@ -19,7 +19,7 @@ export class HookClient {
      * @param args SendOptions
      * @returns Promise<HookMessage>
      */
-    public async send(opt: string|SendOptions, args?: SendOptions): Promise<any> {
+    public async send(opt: string|SendOptions, args?: SendOptions): Promise<HookMessage> {
         if (typeof opt == "string") {
             opt = {
                 content: opt,
