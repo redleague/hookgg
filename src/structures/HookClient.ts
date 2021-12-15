@@ -1,53 +1,32 @@
-/* types */
-import { ClientOptions } from '../types/ClientOptions';
-import { Payload } from '../types/Payload';
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/explicit-member-accessibility */
 
-import { createClient } from '../utils/RequestHandler';
-import { HookError } from '../utils/ErrorHandler';
-import axios from 'axios';
+import { makeRequest } from "../utils/makeRequest";
+import { HookMessage } from "./HookMessage";
+
+import { SendOptions, HookClientOptions } from "../typings";
 
 export class HookClient {
-  private _token: string;
+    options: HookClientOptions;
 
-  public constructor(options: ClientOptions) {
-    this._token = options.token;
-  }
+    constructor(options: HookClientOptions) {
+        this.options = options;
+    }
 
- public send(originalPayload?: Payload): Promise<any> {
-   if(!this._token) throw new HookError('Cannot send a webhook without a token');
+    /**
+     *
+     * @param opt Message Content | SendOptions
+     * @param args SendOptions
+     * @returns Promise<HookMessage>
+     */
+    public async send(opt: string|SendOptions, args?: SendOptions): Promise<any> {
+        if (typeof opt == "string") {
+            opt = {
+                content: opt,
+                ...args
+            };
+        }
 
-   if(!originalPayload) throw new HookError('Cannot send a empty webhook!');
-   
-   const payload: object = {
-     username: originalPayload.username ? originalPayload.username : 'Hook.gg',
-     avatar_url: originalPayload.avatar_url ? originalPayload.avatar_url : '',
-     content: originalPayload.content ? originalPayload.content : '',
-     tts: originalPayload ? originalPayload.tts : false,
-     embeds: originalPayload && typeof originalPayload === 'object' && originalPayload.embed ? [originalPayload.embed] : ''
-   }
-
-    return new Promise((resolve, reject) => {
-      this._post(payload)
-      .then(res => resolve(res.data))
-      .catch(e => reject(e));
-    });
-
-  }
-
- private async _post(payload: Payload): Promise<any> {
-    const client = createClient();
-
-    let creds = await this.getDetails(this._token);
-
-    return new Promise((resolve, reject) => {
-      client.post(`/webhooks/${creds.id}/${creds.token}`, payload)      
-      .then(res => resolve(res.data))
-      .catch(e => reject(e));
-    });
-  }
-
-  public getDetails(token: string): Promise<any> {
-    return axios.get(token)
-      .then(res => res.data)
-  }
+        return new HookMessage(await makeRequest(`${this.options.url}?wait=true`, "POST", this.options, opt), this.options.url, this);
+    }
 }

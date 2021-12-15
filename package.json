@@ -1,37 +1,42 @@
 {
   "name": "hook.gg",
-  "version": "1.1.0",
-  "description": "Hook.gg is a library for sending webhooks to Discord",
+  "version": "2.0.0",
+  "description": "A simple library that simplifies posting webhooks on discord",
+  "repository": "https://github.com/redleague/hookgg",
+  "license": "MIT",
+  "author": "Red League",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "files": [
     "dist/**/*"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "npm run lint && npm run compile",
+    "compile": "tsc --build tsconfig.json",
+    "lint": "eslint . --ext .ts",
+    "docs": "typedoc src/index.ts",
+    "start:dev": "ts-node src/index.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/redleague/hookgg.git"
+  "eslintConfig": {
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "extends": "@hazmi35/eslint-config/typescript"
   },
-  "keywords": [
-    "discord",
-    "discordbot",
-    "webhooks",
-    "discord-webhook",
-    "discordwebhook"
-  ],
-  "author": "inhydrox <Rajat Mishra>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/redleague/hookgg/issues"
-  },
-  "homepage": "https://github.com/redleague/hookgg#readme",
   "devDependencies": {
-    "@types/node": "^14.11.8",
-    "typescript": "^4.0.3"
+    "@hazmi35/eslint-config": "^7.0.1",
+    "@types/node": "^16.11.6",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
+    "dotenv": "^10.0.0",
+    "eslint": "^8.2.0",
+    "ts-node": "^10.4.0",
+    "typedoc": "^0.22.10",
+    "typescript": "^4.4.4"
   },
   "dependencies": {
-    "axios": "^0.21.1"
+    "@aero/centra": "^1.0.8"
+  },
+  "engines": {
+    "node": ">=16.6.0"
   }
 }

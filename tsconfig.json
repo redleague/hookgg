@@ -1,16 +1,24 @@
 {
-  "compilerOptions": {
-    "target": "ES2017",                      
-    "module": "commonjs",                   
-    "outDir": "./dist/",                     
-    "strict": true,                           
-    "esModuleInterop": true,
-    "declaration": true,
-    "declarationDir": "./dist/typings",
-    "lib": ["es2017"],
-    "resolveJsonModule": true
-  },
-  "include": [
-    "./src/**/*"
-  ]
+	"compilerOptions": {
+		"target": "ES2021",
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"lib": ["ES2021", "ESNext.Array"],
+		"strict": true,
+		"outDir": "dist",
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"skipLibCheck": true,
+		"noEmitHelpers": true,
+		"importHelpers": true,
+		"resolveJsonModule": true,
+		"typeRoots": [
+			"node_modules/@types",
+			"src/typings"
+		]
+	},
+	"exclude": [],
+	"include": ["src/**/*.ts", "src/**/*.json"]
 }
