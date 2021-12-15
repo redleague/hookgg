@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/explicit-member-accessibility */
+
 import { makeRequest } from "../utils/makeRequest";
 import { HookMessage } from "./HookMessage";
 
