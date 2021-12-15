@@ -1,9 +1,9 @@
 name: Generate docs
 
 on:
-  release:
-    types:
-      - published
+  push:
+    branches:
+      - "master"
 
 jobs:
   generate:
