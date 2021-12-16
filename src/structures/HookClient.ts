@@ -3,8 +3,7 @@
 
 import { makeRequest } from "../utils/makeRequest";
 import { HookMessage } from "./HookMessage";
-
-import { SendOptions, HookClientOptions } from "../typings";
+import { SendOptions, HookClientOptions, Snowflake } from "../typings";
 
 export class HookClient {
     options: HookClientOptions;
@@ -28,5 +27,14 @@ export class HookClient {
         }
 
         return new HookMessage(await makeRequest(`${this.options.url}?wait=true`, "POST", this.options, opt), this.options.url, this);
+    }
+
+    /**
+     *
+     * @param id Snowflake - Id for fetching the webhook message
+     * @returns Promise<HookMessage>
+     */
+    public async fetchMessage(id: Snowflake): Promise<HookMessage> {
+        return new HookMessage(await makeRequest(`${this.options.url}/messages/${id}`, "GET", this.options), this.options.url, this);
     }
 }

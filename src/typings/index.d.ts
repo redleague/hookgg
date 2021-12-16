@@ -12,6 +12,8 @@ type HttpMethod =
 	| "GET"
 	| "PATCH";
 
+type Snowflake = string;
+
 export interface SendOptions {
     content?: string;
     embeds?: Embed[];
