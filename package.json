@@ -1,6 +1,6 @@
 {
   "name": "hook.gg",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A simple library that simplifies posting webhooks on discord",
   "repository": "https://github.com/redleague/hookgg",
   "license": "MIT",
