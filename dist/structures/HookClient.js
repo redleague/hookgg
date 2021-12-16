@@ -24,5 +24,13 @@ class HookClient {
         }
         return new HookMessage_1.HookMessage(await (0, makeRequest_1.makeRequest)(`${this.options.url}?wait=true`, "POST", this.options, opt), this.options.url, this);
     }
+    /**
+     *
+     * @param id Snowflake - Id for fetching the webhook message
+     * @returns Promise<HookMessage>
+     */
+    async fetchMessage(id) {
+        return new HookMessage_1.HookMessage(await (0, makeRequest_1.makeRequest)(`${this.options.url}/messages/${id}`, "GET", this.options), this.options.url, this);
+    }
 }
 exports.HookClient = HookClient;
