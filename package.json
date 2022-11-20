@@ -23,7 +23,7 @@
     "extends": "@hazmi35/eslint-config/typescript"
   },
   "devDependencies": {
-    "@hazmi35/eslint-config": "^7.0.1",
+    "@hazmi35/eslint-config": "^8.6.0",
     "@types/node": "^16.11.6",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.3.0",
